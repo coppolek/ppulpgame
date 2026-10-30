@@ -1,0 +1,6 @@
+{
+  "name": "RetroGames - Play Classic Retro Video Games Online",
+  "description": "Piattaforma di retro gaming con l'intero catalogo Sega (Genesis, Master System, Game Gear, 32X, Sega CD), Nintendo (NES, SNES, N64, GB, GBC, GBA, NDS), Arcade MAME e PlayStation 1. Oltre 29.500 giochi con iframe ufficiali di RetroGames.cc, salvataggi e controlli personalizzati.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
