@@ -8,10 +8,10 @@ services:
     container_name: puulp-app
     restart: always
     ports:
-      - "3100:3100"
+      - "3001:3001"
     environment:
       - NODE_ENV=production
-      - PORT=3100
+      - PORT=3001
       - HOST=0.0.0.0
     healthcheck:
       test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/health"]
