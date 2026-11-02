@@ -2,20 +2,19 @@ version: '3.8'
 
 services:
   puulp:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: node:20-alpine
     container_name: puulp-app
     restart: always
     ports:
       - "3001:3001"
+    working_dir: /app
     environment:
       - NODE_ENV=production
       - PORT=3001
       - HOST=0.0.0.0
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:3001/health"]
-      interval: 15s
-      timeout: 5s
-      retries: 3
-      start_period: 5s
+    command: >
+      sh -c "npm install -g serve &&
+             wget --no-check-certificate -O puulp-dist.tar.gz https://ais-pre-zfg2u7sujutswwp5vu24f5-132736654569.europe-west3.run.app/puulp-dist.tar.gz &&
+             mkdir -p dist &&
+             tar -xzf puulp-dist.tar.gz -C dist &&
+             serve -s dist -l 3001"
