@@ -3,6 +3,7 @@ import { X, Upload, FileCode, CheckCircle2, AlertCircle, Play } from 'lucide-rea
 import { RomFileInfo } from '../games/customRomEngine';
 import { RetroGame } from '../types/game';
 import { retroAudio } from '../audio/retroAudio';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface CustomRomModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
   onClose,
   onLaunchRom,
 }) => {
+  const { t } = useLanguage();
   const [dragActive, setDragActive] = useState(false);
   const [loadedRom, setLoadedRom] = useState<RomFileInfo | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -169,8 +171,8 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
             <Upload className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">Carica ROM Personalizzata</h3>
-            <p className="text-xs text-slate-400">Gioca con i tuoi file .nes, .gb, .gba, .smd direttamente nel browser</p>
+            <h3 className="text-lg font-bold text-white">{t('modal.uploadTitle')}</h3>
+            <p className="text-xs text-slate-400">{t('modal.uploadDesc')}</p>
           </div>
         </div>
 
@@ -209,10 +211,10 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
 
           <FileCode className="w-10 h-10 text-slate-400 mx-auto mb-3" />
           <p className="text-sm font-semibold text-slate-200">
-            Trascina qui il file della tua ROM o <span className="text-rose-400 underline">sfoglia i file</span>
+            {t('hero.uploadRom')}
           </p>
           <p className="text-[11px] text-slate-500 mt-1">
-            Supporta: .NES (Nintendo), .GB / .GBC (Game Boy), .GBA (Advance), .SMD (Mega Drive)
+            Support: .NES, .GB / .GBC, .GBA, .SMD, .BIN, .ZIP
           </p>
         </div>
 
@@ -229,31 +231,31 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
           <div className="mt-4 p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3 font-mono text-xs">
             <div className="flex items-center gap-2 text-emerald-400 font-bold">
               <CheckCircle2 className="w-4 h-4" />
-              <span>Cartuccia Analizzata con Successo!</span>
+              <span>Cartridge OK!</span>
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-[11px]">
               <div>
-                <span className="text-slate-500 block">Titolo Rilevato:</span>
+                <span className="text-slate-500 block">Title:</span>
                 <span className="text-white font-bold">{loadedRom.headerInfo.title}</span>
               </div>
               <div>
-                <span className="text-slate-500 block">Sistema:</span>
+                <span className="text-slate-500 block">System:</span>
                 <span className="text-amber-400 font-bold">{loadedRom.headerInfo.system}</span>
               </div>
               <div>
-                <span className="text-slate-500 block">Tipo Hardware / Mapper:</span>
+                <span className="text-slate-500 block">Mapper / Type:</span>
                 <span className="text-sky-300">{loadedRom.headerInfo.mapperOrType}</span>
               </div>
               <div>
-                <span className="text-slate-500 block">Dimensione ROM:</span>
+                <span className="text-slate-500 block">Size:</span>
                 <span className="text-slate-300">{(loadedRom.size / 1024).toFixed(1)} KB</span>
               </div>
             </div>
 
             {/* Hex Preview */}
             <div className="pt-2 border-t border-slate-800">
-              <div className="text-slate-500 text-[10px] mb-1">ANTEPRIMA BYTE HEADER (HEX):</div>
+              <div className="text-slate-500 text-[10px] mb-1">HEADER HEX PREVIEW:</div>
               <div className="bg-slate-900 p-2 rounded text-[10px] text-slate-300 leading-relaxed font-mono-code overflow-x-auto">
                 {loadedRom.hexPreview.map((row, i) => (
                   <div key={i}>{row}</div>
@@ -269,7 +271,7 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
             onClick={onClose}
             className="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white cursor-pointer"
           >
-            Annulla
+            {t('modal.close')}
           </button>
 
           <button
@@ -282,7 +284,7 @@ export const CustomRomModal: React.FC<CustomRomModalProps> = ({
             }`}
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            <span>Avvia Emulatore ROM</span>
+            <span>{t('modal.play')}</span>
           </button>
         </div>
 
