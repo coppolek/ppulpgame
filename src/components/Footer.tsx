@@ -20,10 +20,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSystem, onOpenUploadRom 
           <div className="space-y-3 md:col-span-1">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 rounded bg-rose-600 flex items-center justify-center font-pixel text-[9px] text-white">
-                RG
+                P
               </div>
               <span className="font-pixel text-xs text-rose-500 tracking-wider">
-                RETROGAMES<span className="text-amber-400">.CC</span>
+                PUULP<span className="text-amber-400">.IT</span>
               </span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
@@ -180,7 +180,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectSystem, onOpenUploadRom 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
           <div>
-            © {new Date().getFullYear()} RetroGames.cc Web Platform · {t('footer.rights')}
+            © {new Date().getFullYear()} puulp.it · {t('footer.rights')}
           </div>
           <div className="flex items-center gap-4">
             <span>Web Audio API Chiptune Synth</span>

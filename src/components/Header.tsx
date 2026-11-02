@@ -35,11 +35,11 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-2 text-left group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded-sm"
           >
             <div className="w-8 h-8 rounded bg-gradient-to-br from-rose-600 via-rose-500 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-950/50">
-              <span className="font-pixel text-[11px] text-white tracking-tighter">RG</span>
+              <span className="font-pixel text-[11px] text-white tracking-tighter">P</span>
             </div>
             <div className="flex items-baseline gap-1.5">
               <span className="font-pixel text-sm sm:text-base tracking-wider text-rose-500 group-hover:text-rose-400 transition-colors whitespace-nowrap">
-                RETROGAMES<span className="text-amber-400">.CC</span>
+                PUULP<span className="text-amber-400">.IT</span>
               </span>
             </div>
           </button>

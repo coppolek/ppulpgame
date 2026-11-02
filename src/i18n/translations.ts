@@ -21,9 +21,9 @@ export const TRANSLATIONS = {
     'header.lang': 'Lingua',
 
     // Hero Section
-    'hero.badge': "L'Emulatore Web Ufficiale dei Grandi Classici",
+    'hero.badge': "Puulp - La Piattaforma Web dei Grandi Classici del Retro Gaming",
     'hero.title': "Rivivi l'era d'oro dei videogiochi retro direttamente nel browser",
-    'hero.description': "Catalogo immenso di oltre {count} giochi retro: l'archivio completo Sega (Genesis, Master System, Game Gear, 32X, Sega CD), la collezione Nintendo (NES, SNES, N64, Game Boy, GBC, GBA, NDS), l'intero catalogo Arcade MAME e PlayStation 1 con iframe ed emulatori ufficiali RetroGames.cc.",
+    'hero.description': "Benvenuto su puulp.it: un catalogo immenso di oltre {count} giochi retro. L'archivio completo Sega (Genesis, Master System, Game Gear, 32X, Sega CD), la collezione Nintendo (NES, SNES, N64, Game Boy, GBC, GBA, NDS), l'intero catalogo Arcade MAME e PlayStation 1 giocabili istantaneamente online.",
     'hero.playNow': 'Gioca Ora: {title}',
     'hero.uploadRom': 'Carica il tuo file ROM (.nes/.gb/.gba)',
     'hero.featureCrt': 'Scanlines & CRT Realistici',
@@ -34,7 +34,7 @@ export const TRANSLATIONS = {
     'hero.pressStart': 'PREMI START PER GIOCARE',
 
     // Categories Browser
-    'categories.badge': 'Esplora per Categoria & Piattaforma (Come su RetroGames.cc)',
+    'categories.badge': 'Esplora il Catalogo puulp.it per Categoria & Piattaforma',
     'categories.title': 'Tutte le Categorie, Console & Sistemi Emulati',
     'categories.tabSystems': 'Sistemi & Console',
     'categories.tabGenres': 'Generi & Tipologie',
@@ -106,13 +106,13 @@ export const TRANSLATIONS = {
     'player.copyDirectLinkBtn': 'Copia Link',
     'player.openNewTab': 'Apri link in una nuova scheda',
     'player.gameUniqueId': 'ID univoco gioco:',
-    'player.originalRetrogames': 'Scheda originale RetroGames.cc',
+    'player.originalRetrogames': 'Scheda del gioco',
     'player.embedCodeTitle': 'Codice Embed HTML (Iframe)',
-    'player.embedCodeDesc': 'Copia e incolla questo codice iframe per integrare {title} in qualsiasi pagina web, blog o app.',
+    'player.embedCodeDesc': 'Copia e incolla questo codice iframe per integrare {title} da puulp.it in qualsiasi pagina web, blog o app.',
     'player.copyEmbedBtn': 'Copia Codice Embed',
     'player.copied': 'Copiato!',
     'player.iframeDirectUrl': 'URL Diretto Iframe:',
-    'player.standardSize': '600x450 (Standard RetroGames)',
+    'player.standardSize': '600x450 (Standard Puulp)',
     'player.controlsTitle': 'Mappa Tasti Tastiera & Gamepad',
     'player.controlsDesc': 'Personalizza i tasti o collega un controller USB / Bluetooth.',
     'player.remapBtn': 'Personalizza Tasti',
@@ -147,11 +147,11 @@ export const TRANSLATIONS = {
     'modal.uploadDesc': 'Supporta file .nes, .gb, .gba, .sfc, .md con salvataggi locali.',
 
     // Footer
-    'footer.desc': "La piattaforma web moderna per giocare ai leggendari videogiochi classici delle sale giochi e delle console casalinghe anni '80, '90 e 2000.",
+    'footer.desc': "puulp.it - La piattaforma web moderna per giocare ai leggendari videogiochi classici delle sale giochi e delle console casalinghe anni '80, '90 e 2000.",
     'footer.supportedSystems': 'Sistemi Supportati',
     'footer.featuresTitle': 'Funzionalità Piattaforma',
     'footer.legalTitle': 'Informazioni & Licenze',
-    'footer.legalDisclaimer': 'Tutti i marchi, loghi, titoli di giochi e artwork appartengono ai rispettivi proprietari e costruttori (Nintendo, Sega, Sony, SNK, Namco, Capcom, Konami). Gli emulatori e gli iframe sono incorporati a scopo didattico e di conservazione storica dei videogiochi secondo lo standard RetroGames.cc.',
+    'footer.legalDisclaimer': 'Tutti i marchi, loghi, titoli di giochi e artwork appartengono ai rispettivi proprietari e costruttori (Nintendo, Sega, Sony, SNK, Namco, Capcom, Konami). puulp.it integra emulatori per scopi di preservazione storica e didattica dei videogiochi classici.',
     'footer.rights': 'Tutti i diritti riservati ai rispettivi proprietari.',
   },
 
@@ -175,9 +175,9 @@ export const TRANSLATIONS = {
     'header.lang': 'Language',
 
     // Hero Section
-    'hero.badge': 'The Official Web Emulator for Classic Games',
+    'hero.badge': 'Puulp - The Premier Web Platform for Classic Retro Games',
     'hero.title': 'Relive the golden era of retro video games directly in your browser',
-    'hero.description': 'Immense catalog of over {count} retro games: the complete Sega archive (Genesis, Master System, Game Gear, 32X, Sega CD), the Nintendo collection (NES, SNES, N64, Game Boy, GBC, GBA, NDS), the full Arcade MAME and PlayStation 1 libraries with official RetroGames.cc iframes and emulators.',
+    'hero.description': 'Welcome to puulp.it: an immense catalog of over {count} retro games. The complete Sega archive (Genesis, Master System, Game Gear, 32X, Sega CD), the Nintendo collection (NES, SNES, N64, Game Boy, GBC, GBA, NDS), the full Arcade MAME and PlayStation 1 libraries playable instantly online.',
     'hero.playNow': 'Play Now: {title}',
     'hero.uploadRom': 'Upload your ROM file (.nes/.gb/.gba)',
     'hero.featureCrt': 'Realistic Scanlines & CRT',
@@ -188,7 +188,7 @@ export const TRANSLATIONS = {
     'hero.pressStart': 'PRESS START TO PLAY',
 
     // Categories Browser
-    'categories.badge': 'Browse by Category & Platform (RetroGames.cc Style)',
+    'categories.badge': 'Browse the puulp.it Catalog by Category & Platform',
     'categories.title': 'All Categories, Consoles & Emulated Systems',
     'categories.tabSystems': 'Systems & Consoles',
     'categories.tabGenres': 'Genres & Categories',
@@ -260,13 +260,13 @@ export const TRANSLATIONS = {
     'player.copyDirectLinkBtn': 'Copy Link',
     'player.openNewTab': 'Open link in a new tab',
     'player.gameUniqueId': 'Unique game ID:',
-    'player.originalRetrogames': 'Original page on RetroGames.cc',
+    'player.originalRetrogames': 'Game page',
     'player.embedCodeTitle': 'HTML Embed Code (Iframe)',
-    'player.embedCodeDesc': 'Copy and paste this iframe snippet to embed {title} into any website, blog, or app.',
+    'player.embedCodeDesc': 'Copy and paste this iframe snippet to embed {title} from puulp.it into any website, blog, or app.',
     'player.copyEmbedBtn': 'Copy Embed Code',
     'player.copied': 'Copied!',
     'player.iframeDirectUrl': 'Direct Iframe URL:',
-    'player.standardSize': '600x450 (RetroGames Standard)',
+    'player.standardSize': '600x450 (Standard Puulp)',
     'player.controlsTitle': 'Keyboard & Gamepad Keymap',
     'player.controlsDesc': 'Customize your keys or plug in a USB / Bluetooth gamepad.',
     'player.remapBtn': 'Customize Keys',
@@ -301,11 +301,11 @@ export const TRANSLATIONS = {
     'modal.uploadDesc': 'Supports .nes, .gb, .gba, .sfc, .md files with local save states.',
 
     // Footer
-    'footer.desc': "The modern web platform to play legendary retro classics from 80s, 90s, and 2000s arcade cabinets and home consoles.",
+    'footer.desc': "puulp.it - The modern web platform to play legendary retro classics from 80s, 90s, and 2000s arcade cabinets and home consoles.",
     'footer.supportedSystems': 'Supported Systems',
     'footer.featuresTitle': 'Platform Features',
     'footer.legalTitle': 'Information & Licenses',
-    'footer.legalDisclaimer': 'All trademarks, logos, game titles, and artwork belong to their respective copyright holders (Nintendo, Sega, Sony, SNK, Namco, Capcom, Konami). Emulators and iframes are embedded for educational purposes and video game preservation under the RetroGames.cc standard.',
+    'footer.legalDisclaimer': 'All trademarks, logos, game titles, and artwork belong to their respective copyright holders (Nintendo, Sega, Sony, SNK, Namco, Capcom, Konami). puulp.it embeds emulators for historical preservation and educational purposes.',
     'footer.rights': 'All rights reserved by respective copyright owners.',
   }
 };

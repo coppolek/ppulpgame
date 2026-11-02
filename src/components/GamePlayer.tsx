@@ -487,7 +487,7 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-mono text-[11px] text-slate-300 uppercase font-bold">
-                {playMode === 'iframe' ? 'RetroGames.cc Iframe Online' : 'Canvas Engine Locale'}
+                {playMode === 'iframe' ? 'Puulp Online Iframe' : 'Puulp Canvas Engine Locale'}
               </span>
             </div>
 
@@ -624,7 +624,7 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({
                 {!iframeLoaded && (
                   <div className="absolute inset-0 bg-slate-950 flex flex-col items-center justify-center gap-3">
                     <div className="w-10 h-10 border-4 border-rose-500 border-t-transparent rounded-full animate-spin" />
-                    <span className="font-pixel text-xs text-rose-400">CARICAMENTO EMULATORE RETROGAMES...</span>
+                    <span className="font-pixel text-xs text-rose-400">CARICAMENTO EMULATORE PUULP...</span>
                   </div>
                 )}
               </div>
