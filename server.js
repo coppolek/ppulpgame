@@ -104,11 +104,35 @@ if (isUnixSocket) {
     console.log(`[Puulp] Server avviato su socket Hostinger: ${RAW_PORT}`);
   });
 } else {
-  // Listen on standard TCP port
-  const PORT = Number(RAW_PORT) || 3000;
+  // Listen on standard TCP port with automatic fallback if port is in use
+  const initialPort = Number(RAW_PORT) || 3000;
   const HOST = process.env.HOST || '0.0.0.0';
-  app.listen(PORT, HOST, () => {
-    console.log(`[Puulp] Server di produzione avviato su http://${HOST}:${PORT}`);
-    console.log(`[Puulp] Configurato per puulp.it - Serving: ${DIST_DIR}`);
-  });
+
+  function startServer(targetPort) {
+    const serverInstance = app.listen(targetPort, HOST, () => {
+      console.log(`[Puulp] Server di produzione avviato con successo su http://${HOST}:${targetPort}`);
+      console.log(`[Puulp] Configurato per puulp.it - Serving: ${DIST_DIR}`);
+    });
+
+    serverInstance.on('error', (err) => {
+      if (err.code === 'EADDRINUSE') {
+        console.warn(`[Puulp] ATTENZIONE: La porta ${targetPort} è già occupata da un altro processo.`);
+        // Try next port up to 3010 or 8080
+        if (targetPort < 3010) {
+          const nextPort = targetPort + 1;
+          console.log(`[Puulp] Tentativo automatico sulla porta successiva: ${nextPort}...`);
+          startServer(nextPort);
+        } else {
+          console.error(`[Puulp] Tutte le porte fino a ${targetPort} sono occupate.`);
+          console.error(`[Puulp] Libera la porta 3000 con il comando: fuser -k 3000/tcp oppure usa: PORT=8080 npm start`);
+          process.exit(1);
+        }
+      } else {
+        console.error('[Puulp] Errore del server:', err);
+        process.exit(1);
+      }
+    });
+  }
+
+  startServer(initialPort);
 }
