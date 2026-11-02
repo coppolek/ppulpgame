@@ -8,7 +8,7 @@ services:
     container_name: puulp-app
     restart: always
     ports:
-      - "3000:3000"
+      - "3100:3100"
     environment:
       - NODE_ENV=production
       - PORT=3000
