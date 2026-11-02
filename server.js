@@ -2,24 +2,37 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
 const DIST_DIR = path.join(__dirname, 'dist');
+const INDEX_HTML = path.join(DIST_DIR, 'index.html');
 
 // Disable x-powered-by header
 app.disable('x-powered-by');
 
-// Healthcheck endpoint for VPS monitoring (e.g. Uptime Kuma, Nginx healthcheck)
+// Auto-build fallback: If Hostinger deployed without running `npm run build`,
+// build the client assets automatically so the server doesn't fail!
+if (!fs.existsSync(INDEX_HTML)) {
+  try {
+    console.log('[Puulp] Cartella dist non trovata. Esecuzione automatica build...');
+    execSync('npm run build', { stdio: 'inherit', cwd: __dirname });
+    console.log('[Puulp] Build completata con successo!');
+  } catch (err) {
+    console.error('[Puulp] Attenzione: compilazione automatica non riuscita:', err.message);
+  }
+}
+
+// Healthcheck endpoint for VPS & Hostinger monitoring
 app.get('/health', (_req, res) => {
   res.status(200).json({
     status: 'ok',
     app: 'Puulp Web Platform',
     domain: 'puulp.it',
+    distReady: fs.existsSync(INDEX_HTML),
     uptime: process.uptime(),
     timestamp: new Date().toISOString()
   });
@@ -27,7 +40,6 @@ app.get('/health', (_req, res) => {
 
 // Cache control headers for static assets
 app.use((req, res, next) => {
-  // Allow iframes embedding
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   
@@ -50,10 +62,10 @@ if (fs.existsSync(DIST_DIR)) {
 
   // Fallback to index.html for SPA client-side routing
   app.get('*', (_req, res) => {
-    res.sendFile(path.join(DIST_DIR, 'index.html'));
+    res.sendFile(INDEX_HTML);
   });
 } else {
-  // If dist is not yet built
+  // If dist is still not ready
   app.get('*', (_req, res) => {
     res.status(503).send(`
       <!DOCTYPE html>
@@ -72,7 +84,7 @@ if (fs.existsSync(DIST_DIR)) {
         <div class="card">
           <h1>Puulp (puulp.it)</h1>
           <p>La build di produzione non è ancora presente.</p>
-          <p>Esegui sulla tua VPS:</p>
+          <p>Esegui sul terminale Hostinger:</p>
           <code>npm run build</code>
         </div>
       </body>
@@ -81,7 +93,22 @@ if (fs.existsSync(DIST_DIR)) {
   });
 }
 
-app.listen(PORT, HOST, () => {
-  console.log(`[Puulp] Server di produzione avviato su http://${HOST}:${PORT}`);
-  console.log(`[Puulp] Configurato per puulp.it - Serving: ${DIST_DIR}`);
-});
+// Hostinger & Passenger port compatibility
+// Hostinger Phusion Passenger passes either a port number OR a unix socket path (e.g. /tmp/passenger.xxx/socket)
+const RAW_PORT = process.env.PORT || 3000;
+const isUnixSocket = typeof RAW_PORT === 'string' && (isNaN(Number(RAW_PORT)) || RAW_PORT.startsWith('/') || RAW_PORT.startsWith('\\\\'));
+
+if (isUnixSocket) {
+  // Listen on Hostinger Passenger unix socket (do NOT pass host string here!)
+  app.listen(RAW_PORT, () => {
+    console.log(`[Puulp] Server avviato su socket Hostinger: ${RAW_PORT}`);
+  });
+} else {
+  // Listen on standard TCP port
+  const PORT = Number(RAW_PORT) || 3000;
+  const HOST = process.env.HOST || '0.0.0.0';
+  app.listen(PORT, HOST, () => {
+    console.log(`[Puulp] Server di produzione avviato su http://${HOST}:${PORT}`);
+    console.log(`[Puulp] Configurato per puulp.it - Serving: ${DIST_DIR}`);
+  });
+}
